@@ -250,7 +250,18 @@ function M.open(in_progress)
             return true
         end,
     }
-    pickers.new({}, opts):find()
+    pickers
+        .new(
+            require("telescope.themes").get_ivy({
+                borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+                layout_config = {
+                    height = 0.4,
+                },
+                winblend = vim.o.winblend,
+            }),
+            opts
+        )
+        :find()
 end
 
 return M
