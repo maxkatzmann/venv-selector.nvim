@@ -251,16 +251,15 @@ function M.open(in_progress)
         end,
     }
     pickers
-        .new(
-            require("telescope.themes").get_ivy({
-                borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-                layout_config = {
-                    height = 0.4,
-                },
-                winblend = vim.o.winblend,
-            }),
-            opts
-        )
+        .new({
+            layout_strategy = "custom",
+            sorting_strategy = "ascending",
+            path_display = {
+                "shorten",
+            },
+            borderchars = { "─", " ", " ", " ", " ", " ", " ", " " },
+            winblend = vim.o.winblend,
+        }, opts)
         :find()
 end
 
